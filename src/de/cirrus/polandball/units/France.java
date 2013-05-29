@@ -7,6 +7,9 @@ public class France extends Mob {
 
 	public France(Player player) {
 		super(3, player);
+		maxHealth = health = 125;
+		speed = 100;
+
 		weapon = new Shotgun(this);
 	}
 

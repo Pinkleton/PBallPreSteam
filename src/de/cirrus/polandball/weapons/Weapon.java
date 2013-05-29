@@ -3,7 +3,6 @@ package de.cirrus.polandball.weapons;
 import java.util.Random;
 
 import de.cirrus.polandball.units.Mob;
-import de.cirrus.polandball.units.Unit;
 
 public class Weapon {
 	public static final Random random = new Random();

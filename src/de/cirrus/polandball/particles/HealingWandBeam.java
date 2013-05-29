@@ -1,19 +1,14 @@
 package de.cirrus.polandball.particles;
 
+import java.util.Random;
+
 import de.cirrus.polandball.Art;
 import de.cirrus.polandball.Bitmap;
 import de.cirrus.polandball.Team;
 import de.cirrus.polandball.units.Mob;
 
-import java.util.Random;
-
-/**
- * User: Cirrus
- * Date: 25.05.13
- * Time: 20:12
- */
-public class Healwind extends Particle {
-	public static final Random random = new Random();
+public class HealingWandBeam extends Particle {
+	private static final Random random = new Random();
 
 	public Mob from, to;
 	public int life = 1;
@@ -23,23 +18,20 @@ public class Healwind extends Particle {
 	public double yo = (random.nextDouble() - 0.5) * 5;
 	public double zo = (random.nextDouble() - 0.5) * 5;
 
-
-	public Healwind (Mob from, Mob to) {
+	public HealingWandBeam(Mob from, Mob to) {
 		this.from = from;
 		this.to = to;
+		pos = random.nextDouble() * (1 - 0.2);
 		life = random.nextInt(10) + 20;
-		pos = random.nextDouble() * (1);
-		speed = (random.nextDouble() + 0.5) * 0.02;
+		speed = (random.nextDouble() + 0.4) * 0.02;
 	}
 
 	public void tick() {
-		if (--life < 0 || pos >  1) {
+		if (--life < 0 || pos > 1) {
 			remove();
 			return;
 		}
-
-
-		// BÃ©zier!!!
+		// Bézier!!
 
 		double xs = from.x + Math.cos(from.aimDir) * 4;
 		double ys = from.y + Math.sin(from.aimDir) * 4;
@@ -56,16 +48,13 @@ public class Healwind extends Particle {
 		x = x0 + (x1 - x0) * pos + xo * pos;
 		y = y0 + (y1 - y0) * pos + yo * pos;
 		z = from.z + (to.z - from.z) * pos + 5 + zo * pos;
-		pos+=speed;
-
-
+		pos += speed;
 	}
 
 	public void render(Bitmap b, int xp, int yp) {
-		b.blendDraw(Art.i.particles[from.team == Team.soviet ? 0 : 1][3], xp - 4, yp - 4, ((0x10101  * br) | 0xff000000) << 3);
+		b.blendDraw(Art.i.particles[from.team == Team.soviet ? 0 : 1][3], xp - 4, yp - 4, 0x10101 * br);
 	}
 
 	public void renderShadows(Bitmap b, int xp, int yp) {
 	}
 }
-

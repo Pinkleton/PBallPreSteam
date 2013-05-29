@@ -4,7 +4,6 @@ import de.cirrus.polandball.Art;
 import de.cirrus.polandball.Bitmap;
 import de.cirrus.polandball.particles.FlameDebris;
 import de.cirrus.polandball.units.Mob;
-import de.cirrus.polandball.units.Unit;
 import de.cirrus.polandball.weapons.Weapon;
 
 public class Rocket extends Bullet {
@@ -47,8 +46,12 @@ public class Rocket extends Bullet {
 		b.fill(xp - 1, yp, xp, yp, 1);
 	}
 	
-	public void render(Bitmap b, int xp, int yp){
-		int frame = (int) Math.floor(-Math.atan2(ya, xa) * 16 / (Math.PI*2) + 4.5) & 7;
+	public void render(Bitmap b, int xp, int yp){ 
+		double xxa = ((xa - ya) * SCALE_X);
+		double yya = ((ya + xa) * SCALE_Y - za);
+
+		int frame = (int) (Math.floor(-Math.atan2(yya, xxa) * 16 / (Math.PI * 2)) + 4.5) & 7;
+
 		b.draw(Art.i.projectiles[frame][0], xp - 4, yp - 4);
 	}
 	

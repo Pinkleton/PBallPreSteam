@@ -7,6 +7,8 @@ public class Ukraine extends Mob {
 
 	public Ukraine(Player player) {
 		super(5, player);
+		maxHealth = health = 175;
+		speed = 93;
 		weapon = new StickyBombLauncher(this);
 	}
 

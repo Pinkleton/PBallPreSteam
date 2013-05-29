@@ -5,7 +5,6 @@ import java.util.List;
 
 import de.cirrus.polandball.entities.StickyBomb;
 import de.cirrus.polandball.units.Mob;
-import de.cirrus.polandball.units.Unit;
 
 public class StickyBombLauncher extends Weapon {
 

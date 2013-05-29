@@ -7,9 +7,10 @@ public class Germany extends Mob {
 
 	public Germany(Player player) {
 		super(1, player);
-		weapon = new FlameThrower(this);
+		maxHealth = health = 1750;
+		speed = 100;
 
-		health = maxHealth = 150;
+		weapon = new FlameThrower(this);
 	}
 
 }

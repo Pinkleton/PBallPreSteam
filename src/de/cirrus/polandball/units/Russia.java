@@ -7,6 +7,11 @@ public class Russia extends Mob {
 
 	public Russia(Player player) {
 		super(4, player);
+		
+		maxHealth = health = 125;
+		speed = 133;
+		visRange = 10;
+		
 		weapon = new AssaultRifle(this);
 	}
 
